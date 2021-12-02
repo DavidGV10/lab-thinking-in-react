@@ -7,21 +7,23 @@ export default function FilterableProductTable(props){
     
     const [products, setProducts] = useState(props.products.data)
     const [filteredProducts, setFilteredProducts] = useState(props.products.data)
+    const [checked, setChecked] = useState(filteredProducts)
    
     function filterProducts(product){
         if(product === "") setFilteredProducts(products)
         else {
             const filtered = filteredProducts.filter((elem)=>elem.name.toLowerCase().includes(product.toLowerCase()))
             setFilteredProducts(filtered)
+            setChecked(filtered)
         }
     }
     function showStock(isChecked){
         if(isChecked === "true"){
-            const filtered = filteredProducts.filter((elem)=>elem.stocked === true)
+            const filtered = checked.filter((elem)=>elem.stocked === true)
             setFilteredProducts(filtered)
         }
         if(isChecked === "false"){
-            setFilteredProducts(products)
+            setFilteredProducts(checked)
         }
     }
     

@@ -9,8 +9,6 @@ function handleInput(event){
     
     setProduct(event.target.value)
     props.filterProducts(event.target.value)
-
-    
 }
 function handleInputCheck(event){
     if(event.target.checked === true){
